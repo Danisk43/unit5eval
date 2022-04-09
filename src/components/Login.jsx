@@ -1,6 +1,11 @@
 import React from 'react'
+import { useDispatch } from 'react-redux'
+import {userdata,loginAction} from "../redux/action"
+ 
 
 const Login = () => {
+
+  const dispatch=useDispatch();
 
     const [input,setInput]=React.useState([])
 
@@ -27,8 +32,12 @@ const  inp=JSON.stringify(input)
       
          
           .then((res) => (res.json()))
-          .then((res) => (console.log(res)))
-  }
+          .then((res) =>{ dispatch(userdata(input));
+          dispatch(loginAction(true))
+          })
+          
+        }
+
 
   return (
     <div>
