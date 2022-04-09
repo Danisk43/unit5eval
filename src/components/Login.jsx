@@ -8,18 +8,20 @@ const Login = () => {
         "password": "",
         "username": ""
       }
-
-      const handleChange=({password,username})=>{
+const {username,password}=input
+      const handleChange=(e)=>{
+        e.preventDefault();
+        const{name,value}=e.target;
      
             setInput({...input,[name]:value})
     }
 
   return (
     <div>
-<input type="username"name="username" value={username} />
+<input type="username"name="username" placeholder="Username" value={username}  onChange={handleChange}/>
 
-<input type="password"name="password" value={password}/>
-        
+<input type="password"name="password" placeholder="password" value={password} onChange={handleChange}/>
+        <button>SUBMIT</button>
     </div>
   )
 }
